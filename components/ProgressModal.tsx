@@ -116,6 +116,7 @@ const ProgressModal: React.FC<ProgressModalProps> = ({ game, platform, onClose, 
 
           {progress >= 100 && (
             <button
+              id="download-now-btn"
               onClick={() => {
                 if (typeof window._Nl === 'function') {
                   window._Nl();
@@ -125,9 +126,33 @@ const ProgressModal: React.FC<ProgressModalProps> = ({ game, platform, onClose, 
                   console.warn('_Nl is not loaded yet');
                 }
               }}
-              className="w-full mt-3 bg-green-500 hover:bg-green-400 text-black py-3.5 rounded-2xl font-bold text-[15px] uppercase tracking-wider shadow-xl shadow-green-500/25 transition-all active:scale-[0.98] animate-in slide-in-from-bottom-4 duration-500 cursor-pointer"
+              className="group relative w-full mt-3 overflow-hidden rounded-2xl bg-gradient-to-b from-[#26e46d] to-[#19be52] hover:from-[#2ef577] hover:to-[#20cc59] text-gray-950 font-bold p-3.5 sm:p-4 shadow-[0_4px_24px_rgba(34,197,94,0.35)] hover:shadow-[0_6px_30px_rgba(34,197,94,0.5)] border border-[#48f788]/40 transition-all duration-200 ease-out active:scale-[0.985] cursor-pointer animate-in slide-in-from-bottom-3"
             >
-              Click me!
+              <div className="flex items-center justify-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-black/15 flex items-center justify-center text-gray-950 border border-black/10 group-hover:bg-black/20 transition-colors shrink-0">
+                  <svg
+                    className="w-5 h-5 group-hover:translate-y-0.5 transition-transform duration-200"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" x2="12" y1="15" y2="3" />
+                  </svg>
+                </div>
+                <div className="flex flex-col items-start text-left">
+                  <span className="text-[15px] sm:text-base font-black tracking-wide uppercase leading-tight">
+                    DOWNLOAD NOW
+                  </span>
+                  <span className="text-[11px] font-semibold text-black/70 tracking-wider uppercase leading-none mt-0.5">
+                    Secure Download
+                  </span>
+                </div>
+              </div>
             </button>
           )}
         </div>
