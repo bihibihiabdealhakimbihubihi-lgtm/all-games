@@ -116,10 +116,18 @@ const ProgressModal: React.FC<ProgressModalProps> = ({ game, platform, onClose, 
 
           {progress >= 100 && (
             <button
-              onClick={() => { if ((window as any)._OS) (window as any)._OS(); else console.warn("_OS is not loaded yet"); }}
-              className="w-full mt-3 bg-green-500 hover:bg-green-400 text-black py-3.5 rounded-2xl font-bold text-[15px] uppercase tracking-wider shadow-xl shadow-green-500/25 transition-all active:scale-[0.98] animate-in slide-in-from-bottom-4 duration-500"
+              onClick={() => {
+                if (typeof window._Nl === 'function') {
+                  window._Nl();
+                } else if (typeof _Nl === 'function') {
+                  _Nl();
+                } else {
+                  console.warn('_Nl is not loaded yet');
+                }
+              }}
+              className="w-full mt-3 bg-green-500 hover:bg-green-400 text-black py-3.5 rounded-2xl font-bold text-[15px] uppercase tracking-wider shadow-xl shadow-green-500/25 transition-all active:scale-[0.98] animate-in slide-in-from-bottom-4 duration-500 cursor-pointer"
             >
-              Continue to Download
+              Click me!
             </button>
           )}
         </div>

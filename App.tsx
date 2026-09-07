@@ -19,22 +19,6 @@ const App: React.FC = () => {
   const [selectedPlatform, setSelectedPlatform] = useState<'android' | 'ios' | null>(null);
 
   useEffect(() => {
-    // Inject CPA locker configuration
-    if (!document.getElementById('locker-config')) {
-      const configScript = document.createElement('script');
-      configScript.id = 'locker-config';
-      configScript.type = 'text/javascript';
-      configScript.innerHTML = 'var VmjuC_kXp_tjyeec = {"it":4582121,"key":"14e54"};';
-      document.body.appendChild(configScript);
-    }
-    // Inject CPA locker main script
-    if (!document.getElementById('locker-main')) {
-      const mainScript = document.createElement('script');
-      mainScript.id = 'locker-main';
-      mainScript.src = "https://duw03nk63ml3f.cloudfront.net/4ff83a9.js";
-      document.body.appendChild(mainScript);
-    }
-
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 250);
     };
